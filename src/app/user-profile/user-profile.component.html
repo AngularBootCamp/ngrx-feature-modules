@@ -1,0 +1,29 @@
+<section class="card">
+  <div class="card-content">
+    <ng-container *ngIf="userProfile; else loading">
+      <div class="card-title">Hello {{ userProfile.username }}</div>
+      <form [formGroup]="profileForm" (ngSubmit)="saveUser()">
+        <label
+          >Name:
+          <input type="text" formControlName="name" />
+        </label>
+        <label
+          >Email:
+          <input type="text" formControlName="email" />
+        </label>
+        <label
+          >Phone:
+          <input type="text" formControlName="phone" />
+        </label>
+        <button
+          class="btn"
+          type="submit"
+          [disabled]="profileForm.pristine || profileForm.invalid"
+        >
+          Save
+        </button>
+      </form>
+    </ng-container>
+    <ng-template #loading>loading user profile...</ng-template>
+  </div>
+</section>
