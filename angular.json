@@ -44,7 +44,17 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "apps/abc/shared/assets",
+                "output": "/assets/"
+              },
+              {
+                "glob": "**/*",
+                "input": "apps/shared/assets",
+                "output": "/assets/"
+              }
             ],
             "extractCss": true,
             "index": "src/index.html",
@@ -54,10 +64,9 @@
             "scripts": [
             ],
             "styles": [
-              "node_modules/materialize-css/dist/css/materialize.css",
-              "node_modules/material-design-icons-iconfont/dist/material-design-icons.css",
-              "src/styles-abc.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "apps/abc/shared/shared.scss",
+              "apps/shared/shared.scss"
             ],
             "tsConfig": "tsconfig.app.json"
           }
@@ -109,7 +118,17 @@
           "options": {
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "apps/abc/shared/assets",
+                "output": "/assets/"
+              },
+              {
+                "glob": "**/*",
+                "input": "apps/shared/assets",
+                "output": "/assets/"
+              }
             ],
             "karmaConfig": "karma.conf.js",
             "main": "src/test.ts",

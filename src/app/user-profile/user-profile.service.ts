@@ -5,14 +5,14 @@ import { map } from 'rxjs/operators';
 
 import { UserProfile } from './user-profile.types';
 
-const apiUrl = 'http://api.angularbootcamp.com';
+const apiUrl = 'https://api.angularbootcamp.com';
 
 @Injectable({ providedIn: 'root' })
 export class UserProfileService {
   constructor(private http: HttpClient) {}
 
   loadUserProfile(): Observable<UserProfile> {
-    const username = 'Bret'; // This would be retrieved from auth system
+    const username = 'lgraham'; // This would be retrieved from auth system
     const params = new HttpParams().set('username', username);
     return this.http
       .get<UserProfile[]>(apiUrl + '/users', { params })

@@ -7,7 +7,7 @@ import {
 } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { of } from 'rxjs';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
 
 import * as UserProfileActions from './user-profile.actions';
 import { UserProfileService } from './user-profile.service';
@@ -33,13 +33,13 @@ export class UserProfileEffects implements OnInitEffects {
   saveUserProfile$ = createEffect(() =>
     this.actions$.pipe(
       ofType(UserProfileActions.saveUserProfile),
-      switchMap(action =>
+      mergeMap(action =>
         this.userProfileSvc.saveUserProfile(action.profile).pipe(
           map(profile =>
-            UserProfileActions.loadUserProfileSuccess({ profile })
+            UserProfileActions.saveUserProfileSuccess({ profile })
           ),
           catchError(error =>
-            of(UserProfileActions.loadUserProfileFailure({ error }))
+            of(UserProfileActions.saveUserProfileFailure({ error }))
           )
         )
       )
