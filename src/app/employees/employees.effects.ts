@@ -13,7 +13,7 @@ import { Employee, EmployeeLoader } from './employee-loader.service';
 import * as EmployeesActions from './employees.actions';
 
 function toName(employee: Employee) {
-  return `${employee.first_name} ${employee.last_name}`;
+  return `${employee.firstName} ${employee.lastName}`;
 }
 
 @Injectable()
