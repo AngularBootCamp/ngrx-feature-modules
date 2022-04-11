@@ -8,7 +8,8 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
   .then(ref => {
     // For fuller StackBlitz support:
     // Ensure Angular destroys itself on hot reloads.

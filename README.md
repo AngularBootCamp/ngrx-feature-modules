@@ -44,4 +44,4 @@ We offer:
 
 <img src="https://oasisdigital.com/images/od-logo.svg" width="379" height="143" />
 
-Copyright 2016-2020 Oasis Digital Solutions Inc.
+Copyright 2016-2022 Oasis Digital Solutions Inc.

@@ -18,8 +18,8 @@ function toName(employee: Employee) {
 
 @Injectable()
 export class EmployeesEffects implements OnInitEffects {
-  loadEmployees$ = createEffect(() => {
-    return this.actions$.pipe(
+  loadEmployees$ = createEffect(() =>
+    this.actions$.pipe(
       ofType(EmployeesActions.loadEmployees),
       switchMap(() =>
         this.loader.getList().pipe(
@@ -36,8 +36,8 @@ export class EmployeesEffects implements OnInitEffects {
           )
         )
       )
-    );
-  });
+    )
+  );
 
   constructor(
     private actions$: Actions,

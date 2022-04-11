@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { AppState } from './reducers';
 import { getUserName } from './user-profile/user-profile.selectors';
 
 @Component({
@@ -13,7 +12,7 @@ import { getUserName } from './user-profile/user-profile.selectors';
 export class AppComponent {
   userName: Observable<string>;
 
-  constructor(store: Store<AppState>) {
-    this.userName = store.pipe(select(getUserName));
+  constructor(store: Store) {
+    this.userName = store.select(getUserName);
   }
 }

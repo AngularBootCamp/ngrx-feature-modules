@@ -14,8 +14,8 @@ import { UserProfileService } from './user-profile.service';
 
 @Injectable()
 export class UserProfileEffects implements OnInitEffects {
-  loadUserProfile$ = createEffect(() => {
-    return this.actions$.pipe(
+  loadUserProfile$ = createEffect(() =>
+    this.actions$.pipe(
       ofType(UserProfileActions.loadUserProfile),
       switchMap(() =>
         this.userProfileSvc.loadUserProfile().pipe(
@@ -27,8 +27,8 @@ export class UserProfileEffects implements OnInitEffects {
           )
         )
       )
-    );
-  });
+    )
+  );
 
   saveUserProfile$ = createEffect(() =>
     this.actions$.pipe(

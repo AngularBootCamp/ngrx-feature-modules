@@ -12,6 +12,5 @@ export const reducers: ActionReducerMap<AppState> = {
     fromUserProfile.userProfileReducer
 };
 
-export const metaReducers: MetaReducer<
-  AppState
->[] = !environment.production ? [] : [];
+export const metaReducers: MetaReducer<AppState>[] =
+  !environment.production ? [] : [];

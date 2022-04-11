@@ -1,9 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-
-import { AppState } from '../reducers';
 
 import * as UserProfileActions from './user-profile.actions';
 import { getUserProfile } from './user-profile.selectors';
@@ -19,20 +17,18 @@ export class UserProfileComponent implements OnDestroy {
   userProfile: UserProfile | undefined;
   profileForm: FormGroup;
 
-  constructor(private store: Store<AppState>, fb: FormBuilder) {
+  constructor(private store: Store, fb: FormBuilder) {
     this.profileForm = fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required]
     });
 
-    this.subscription = store
-      .pipe(select(getUserProfile))
-      .subscribe(p => {
-        this.userProfile = p;
-        this.profileForm.patchValue(p || {}, { emitEvent: false });
-        this.profileForm.reset(this.profileForm.value); // resets pristine flag
-      });
+    this.subscription = store.select(getUserProfile).subscribe(p => {
+      this.userProfile = p;
+      this.profileForm.patchValue(p || {}, { emitEvent: false });
+      this.profileForm.reset(this.profileForm.value); // resets pristine flag
+    });
   }
 
   saveUser() {

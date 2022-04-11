@@ -25,10 +25,10 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    EmployeesDashboardComponent,
     CurrentEmployeesComponent,
-    NewEmployeesComponent,
-    EmployeeDisplayComponent
+    EmployeeDisplayComponent,
+    EmployeesDashboardComponent,
+    NewEmployeesComponent
   ],
   imports: [
     CommonModule,
