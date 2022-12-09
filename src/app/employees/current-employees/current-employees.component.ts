@@ -13,7 +13,7 @@ export class CurrentEmployeesComponent {
 
   constructor(store: Store) {
     this.employeeList = store.select(
-      EmployeesSelectors.getCurrentEmployees
+      EmployeesSelectors.selectCurrentEmployees
     );
   }
 }

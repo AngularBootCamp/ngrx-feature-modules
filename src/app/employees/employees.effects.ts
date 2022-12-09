@@ -10,7 +10,7 @@ import { of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 
 import { Employee, EmployeeLoader } from './employee-loader.service';
-import * as EmployeesActions from './employees.actions';
+import { employeesActions } from './employees.actions';
 
 function toName(employee: Employee) {
   return `${employee.firstName} ${employee.lastName}`;
@@ -20,11 +20,11 @@ function toName(employee: Employee) {
 export class EmployeesEffects implements OnInitEffects {
   loadEmployees$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(EmployeesActions.loadEmployees),
+      ofType(employeesActions.loadEmployees),
       switchMap(() =>
         this.loader.getList().pipe(
           map(employees =>
-            EmployeesActions.loadEmployeesSuccess({
+            employeesActions.loadEmployeesSuccess({
               employees: {
                 currentEmployees: employees.slice(0, 4).map(toName),
                 newEmployees: employees.slice(4, 6).map(toName)
@@ -32,7 +32,7 @@ export class EmployeesEffects implements OnInitEffects {
             })
           ),
           catchError(error =>
-            of(EmployeesActions.loadEmployeesFailure({ error }))
+            of(employeesActions.loadEmployeesFailure({ error }))
           )
         )
       )
@@ -45,6 +45,6 @@ export class EmployeesEffects implements OnInitEffects {
   ) {}
 
   ngrxOnInitEffects(): Action {
-    return EmployeesActions.loadEmployees();
+    return employeesActions.loadEmployees();
   }
 }

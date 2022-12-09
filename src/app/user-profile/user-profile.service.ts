@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -13,7 +13,8 @@ export class UserProfileService {
 
   loadUserProfile(): Observable<UserProfile> {
     const username = 'lgraham'; // This would be retrieved from auth system
-    const params = new HttpParams().set('username', username);
+    const params = { username };
+
     return this.http
       .get<UserProfile[]>(apiUrl + '/users', { params })
       .pipe(

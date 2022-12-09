@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { getUserName } from './user-profile/user-profile.selectors';
+import { selectUserName } from './user-profile/user-profile.selectors';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +13,6 @@ export class AppComponent {
   userName: Observable<string>;
 
   constructor(store: Store) {
-    this.userName = store.select(getUserName);
+    this.userName = store.select(selectUserName);
   }
 }

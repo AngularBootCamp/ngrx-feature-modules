@@ -9,21 +9,21 @@ import { Action } from '@ngrx/store';
 import { of } from 'rxjs';
 import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
 
-import * as UserProfileActions from './user-profile.actions';
+import { userProfileActions } from './user-profile.actions';
 import { UserProfileService } from './user-profile.service';
 
 @Injectable()
 export class UserProfileEffects implements OnInitEffects {
   loadUserProfile$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(UserProfileActions.loadUserProfile),
+      ofType(userProfileActions.loadUserProfile),
       switchMap(() =>
         this.userProfileSvc.loadUserProfile().pipe(
           map(profile =>
-            UserProfileActions.loadUserProfileSuccess({ profile })
+            userProfileActions.loadUserProfileSuccess({ profile })
           ),
           catchError(error =>
-            of(UserProfileActions.loadUserProfileFailure({ error }))
+            of(userProfileActions.loadUserProfileFailure({ error }))
           )
         )
       )
@@ -32,14 +32,14 @@ export class UserProfileEffects implements OnInitEffects {
 
   saveUserProfile$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(UserProfileActions.saveUserProfile),
+      ofType(userProfileActions.saveUserProfile),
       mergeMap(action =>
         this.userProfileSvc.saveUserProfile(action.profile).pipe(
           map(profile =>
-            UserProfileActions.saveUserProfileSuccess({ profile })
+            userProfileActions.saveUserProfileSuccess({ profile })
           ),
           catchError(error =>
-            of(UserProfileActions.saveUserProfileFailure({ error }))
+            of(userProfileActions.saveUserProfileFailure({ error }))
           )
         )
       )
@@ -52,6 +52,6 @@ export class UserProfileEffects implements OnInitEffects {
   ) {}
 
   ngrxOnInitEffects(): Action {
-    return UserProfileActions.loadUserProfile();
+    return userProfileActions.loadUserProfile();
   }
 }

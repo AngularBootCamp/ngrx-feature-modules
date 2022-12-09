@@ -1,26 +1,20 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { createSelector } from '@ngrx/store';
 
-import * as fromEmployees from './employees.reducer';
+import { employeesFeature } from './employees.reducer';
 
-const selectEmployeesState =
-  createFeatureSelector<fromEmployees.State>(
-    fromEmployees.employeesFeatureKey
-  );
-
-const getEmployeeLists = createSelector(
-  selectEmployeesState,
-  state => state.lists
-);
+const { selectLists } = employeesFeature;
 
 // defensive copy of the data coming out of the store
 // createSelector will memoize (cache) the result, meaning it will
 // give the same object until the state changes
-export const getNewEmployees = createSelector(
-  getEmployeeLists,
+export const selectNewEmployees = createSelector(
+  // notice that we don't create this selector - it's automatically
+  // created by NgRx
+  selectLists,
   state => [...state.newEmployees]
 );
 
-export const getCurrentEmployees = createSelector(
-  getEmployeeLists,
+export const selectCurrentEmployees = createSelector(
+  selectLists,
   state => [...state.currentEmployees]
 );

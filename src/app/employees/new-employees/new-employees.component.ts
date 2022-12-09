@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import * as EmployeesActions from '../employees.actions';
+import { employeesActions } from '../employees.actions';
 import * as EmployeesSelectors from '../employees.selectors';
 
 @Component({
@@ -14,11 +14,11 @@ export class NewEmployeesComponent {
 
   constructor(private store: Store) {
     this.newEmpList = store.select(
-      EmployeesSelectors.getNewEmployees
+      EmployeesSelectors.selectNewEmployees
     );
   }
 
   ack(employee: string) {
-    this.store.dispatch(EmployeesActions.ackEmployee({ employee }));
+    this.store.dispatch(employeesActions.ackEmployee({ employee }));
   }
 }

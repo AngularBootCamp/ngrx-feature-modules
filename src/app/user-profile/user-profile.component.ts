@@ -1,20 +1,18 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
-import * as UserProfileActions from './user-profile.actions';
-import { getUserProfile } from './user-profile.selectors';
+import { userProfileActions } from './user-profile.actions';
+import { selectUserProfile } from './user-profile.selectors';
 import { UserProfile } from './user-profile.types';
 
 @Component({
   selector: 'user-profile',
   templateUrl: './user-profile.component.html'
 })
-export class UserProfileComponent implements OnDestroy {
-  private subscription: Subscription;
-
-  userProfile: UserProfile | undefined;
+export class UserProfileComponent {
+  userProfile: Observable<UserProfile | undefined>;
   profileForm: FormGroup;
 
   constructor(private store: Store, fb: FormBuilder) {
@@ -24,24 +22,21 @@ export class UserProfileComponent implements OnDestroy {
       phone: ['', Validators.required]
     });
 
-    this.subscription = store.select(getUserProfile).subscribe(p => {
-      this.userProfile = p;
-      this.profileForm.patchValue(p || {}, { emitEvent: false });
-      this.profileForm.reset(this.profileForm.value); // resets pristine flag
-    });
-  }
-
-  saveUser() {
-    const profile: UserProfile = {
-      ...this.userProfile,
-      ...this.profileForm.value
-    };
-    this.store.dispatch(
-      UserProfileActions.saveUserProfile({ profile })
+    this.userProfile = store.select(selectUserProfile).pipe(
+      tap(p => {
+        this.profileForm.patchValue(p || {}, { emitEvent: false });
+        this.profileForm.reset(this.profileForm.value); // resets pristine flag
+      })
     );
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+  saveUser(userProfile: UserProfile) {
+    const profile: UserProfile = {
+      ...userProfile,
+      ...this.profileForm.value
+    };
+    this.store.dispatch(
+      userProfileActions.saveUserProfile({ profile })
+    );
   }
 }

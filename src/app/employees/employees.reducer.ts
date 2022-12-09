@@ -1,9 +1,7 @@
-import { createReducer, on } from '@ngrx/store';
+import { createFeature, createReducer, on } from '@ngrx/store';
 
-import * as EmployeesActions from './employees.actions';
+import { employeesActions } from './employees.actions';
 import { EmployeeLists } from './employees.types';
-
-export const employeesFeatureKey = 'employees';
 
 export interface State {
   lists: EmployeeLists;
@@ -16,16 +14,19 @@ export const initialState: State = {
   }
 };
 
-export const employeesReducer = createReducer(
-  initialState,
-  on(EmployeesActions.loadEmployeesSuccess, (state, action) => ({
-    ...state,
-    lists: action.employees
-  })),
-  on(EmployeesActions.ackEmployee, (state, action) =>
-    acknowledgeEmployee(state, action.employee)
+export const employeesFeature = createFeature({
+  name: 'employees',
+  reducer: createReducer(
+    initialState,
+    on(employeesActions.loadEmployeesSuccess, (state, action) => ({
+      ...state,
+      lists: action.employees
+    })),
+    on(employeesActions.ackEmployee, (state, action) =>
+      acknowledgeEmployee(state, action.employee)
+    )
   )
-);
+});
 
 function acknowledgeEmployee(
   currentState: State,

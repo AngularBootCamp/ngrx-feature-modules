@@ -47,7 +47,10 @@ const routes: Routes = [
       }
     }),
     EffectsModule.forRoot([UserProfileEffects]),
-    !environment.production ? StoreDevtoolsModule.instrument() : []
+    StoreDevtoolsModule.instrument({
+      maxAge: 50,
+      logOnly: environment.production
+    })
   ],
   bootstrap: [AppComponent]
 })

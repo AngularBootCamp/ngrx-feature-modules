@@ -1,6 +1,5 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "defaultProject": "ngrx-feature-modules",
   "newProjectRoot": "projects",
   "projects": {
     "ngrx-feature-modules": {

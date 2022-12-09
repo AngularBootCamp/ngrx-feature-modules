@@ -33,10 +33,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    StoreModule.forFeature(
-      fromEmployees.employeesFeatureKey,
-      fromEmployees.employeesReducer
-    ),
+    StoreModule.forFeature(fromEmployees.employeesFeature),
     EffectsModule.forFeature([EmployeesEffects])
   ]
 })
