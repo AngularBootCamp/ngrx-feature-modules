@@ -6,8 +6,7 @@ import {
   ofType
 } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
-import { of } from 'rxjs';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { of, catchError, map, switchMap } from 'rxjs';
 
 import { Employee, EmployeeLoader } from './employee-loader.service';
 import { employeesActions } from './employees.actions';

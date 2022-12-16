@@ -6,8 +6,7 @@ import {
   ofType
 } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
-import { of } from 'rxjs';
-import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
+import { of, catchError, map, mergeMap, switchMap } from 'rxjs';
 
 import { userProfileActions } from './user-profile.actions';
 import { UserProfileService } from './user-profile.service';
