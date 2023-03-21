@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  NonNullableFormBuilder,
+  Validators
+} from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable, tap } from 'rxjs';
 
@@ -13,9 +18,13 @@ import { UserProfile } from './user-profile.types';
 })
 export class UserProfileComponent {
   userProfile: Observable<UserProfile | undefined>;
-  profileForm: FormGroup;
+  profileForm: FormGroup<{
+    name: FormControl<string>;
+    email: FormControl<string>;
+    phone: FormControl<string>;
+  }>;
 
-  constructor(private store: Store, fb: FormBuilder) {
+  constructor(private store: Store, fb: NonNullableFormBuilder) {
     this.profileForm = fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],

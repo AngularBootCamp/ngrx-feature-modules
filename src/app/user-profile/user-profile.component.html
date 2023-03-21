@@ -7,15 +7,24 @@
       <form [formGroup]="profileForm" (ngSubmit)="saveUser(profile)">
         <label
           >Name:
-          <input type="text" formControlName="name" />
+          <input
+            type="text"
+            [formControl]="profileForm.controls.name"
+          />
         </label>
         <label
           >Email:
-          <input type="text" formControlName="email" />
+          <input
+            type="text"
+            [formControl]="profileForm.controls.email"
+          />
         </label>
         <label
           >Phone:
-          <input type="text" formControlName="phone" />
+          <input
+            type="text"
+            [formControl]="profileForm.controls.phone"
+          />
         </label>
         <button
           class="btn"
