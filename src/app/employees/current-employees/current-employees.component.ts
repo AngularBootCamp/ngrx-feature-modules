@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import * as EmployeesSelectors from '../employees.selectors';
 
 @Component({
-  selector: 'current-employees',
+  selector: 'app-current-employees',
   templateUrl: './current-employees.component.html'
 })
 export class CurrentEmployeesComponent {

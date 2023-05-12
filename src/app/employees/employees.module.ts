@@ -16,7 +16,7 @@ const routes: Routes = [
     path: '',
     component: EmployeesDashboardComponent,
     children: [
-      { path: '', redirectTo: 'current' },
+      { path: '', redirectTo: 'current', pathMatch: 'full' },
       { path: 'current', component: CurrentEmployeesComponent },
       { path: 'new', component: NewEmployeesComponent }
     ]

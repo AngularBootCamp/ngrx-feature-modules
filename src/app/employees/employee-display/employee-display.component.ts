@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'employee-display',
+  selector: 'app-employee-display',
   template: '{{ employee }}'
 })
 export class EmployeeDisplayComponent {

@@ -1,40 +1,35 @@
-<section class="card">
-  <div class="card-content">
-    <ng-container
-      *ngIf="userProfile | async as profile; else loading"
-    >
-      <div class="card-title">Hello {{ profile.username }}</div>
-      <form [formGroup]="profileForm" (ngSubmit)="saveUser(profile)">
-        <label
-          >Name:
-          <input
-            type="text"
-            [formControl]="profileForm.controls.name"
-          />
-        </label>
-        <label
-          >Email:
-          <input
-            type="text"
-            [formControl]="profileForm.controls.email"
-          />
-        </label>
-        <label
-          >Phone:
-          <input
-            type="text"
-            [formControl]="profileForm.controls.phone"
-          />
-        </label>
-        <button
-          class="btn"
-          type="submit"
-          [disabled]="profileForm.pristine || profileForm.invalid"
-        >
-          Save
-        </button>
-      </form>
-    </ng-container>
-    <ng-template #loading>loading user profile...</ng-template>
-  </div>
-</section>
+<article>
+  <ng-container *ngIf="userProfile | async as profile; else loading">
+    <header>Hello {{ profile.username }}</header>
+    <form [formGroup]="profileForm" (ngSubmit)="saveUser(profile)">
+      <label>
+        Name:
+        <input
+          type="text"
+          [formControl]="profileForm.controls.name"
+        />
+      </label>
+      <label>
+        Email:
+        <input
+          type="text"
+          [formControl]="profileForm.controls.email"
+        />
+      </label>
+      <label>
+        Phone:
+        <input
+          type="text"
+          [formControl]="profileForm.controls.phone"
+        />
+      </label>
+      <button
+        type="submit"
+        [disabled]="profileForm.pristine || profileForm.invalid"
+      >
+        Save
+      </button>
+    </form>
+  </ng-container>
+  <ng-template #loading>loading user profile...</ng-template>
+</article>

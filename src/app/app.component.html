@@ -1,19 +1,14 @@
-Current User: {{ userName | async }}
-<header style="margin-top: 5px">
-  <nav>
-    <div class="nav-wrapper">
-      <ul>
-        <li routerLinkActive="green-background">
-          <a routerLink="/employees">Employees</a>
-        </li>
-        <li routerLinkActive="green-background">
-          <a routerLink="/profile">User Profile</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-</header>
-<div>
-  <router-outlet></router-outlet>
-  <div>Fake Copyright ABC 2057</div>
-</div>
+<p>Current User: {{ userName | async }}</p>
+
+<nav>
+  <ul>
+    <li routerLinkActive="active-link">
+      <a routerLink="/employees">Employees</a>
+    </li>
+    <li routerLinkActive="active-link">
+      <a routerLink="/profile">User Profile</a>
+    </li>
+  </ul>
+</nav>
+
+<router-outlet></router-outlet>

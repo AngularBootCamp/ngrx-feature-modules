@@ -1,13 +1,8 @@
-<section class="card">
-  <div class="card-content">
-    <div class="card-title">Current Employees</div>
-    <ul class="collection">
-      <li
-        class="collection-item"
-        *ngFor="let employee of employeeList | async"
-      >
-        <employee-display [employee]="employee"></employee-display>
-      </li>
-    </ul>
+<article>
+  <header>Current Employees</header>
+  <div *ngFor="let employee of employeeList | async">
+    <app-employee-display
+      [employee]="employee"
+    ></app-employee-display>
   </div>
-</section>
+</article>

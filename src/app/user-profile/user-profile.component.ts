@@ -13,7 +13,7 @@ import { selectUserProfile } from './user-profile.selectors';
 import { UserProfile } from './user-profile.types';
 
 @Component({
-  selector: 'user-profile',
+  selector: 'app-user-profile',
   templateUrl: './user-profile.component.html'
 })
 export class UserProfileComponent {

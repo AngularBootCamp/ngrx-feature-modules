@@ -6,7 +6,7 @@ import { employeesActions } from '../employees.actions';
 import * as EmployeesSelectors from '../employees.selectors';
 
 @Component({
-  selector: 'new-employees',
+  selector: 'app-new-employees',
   templateUrl: './new-employees.component.html'
 })
 export class NewEmployeesComponent {
