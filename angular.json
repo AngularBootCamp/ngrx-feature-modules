@@ -71,8 +71,8 @@
             "scripts": [],
             "stylePreprocessorOptions": {
               "includePaths": [
-                "libs/shared/styles/abc",
-                "libs/shared/styles/shared"
+                "shared/styles/abc",
+                "shared/styles/shared"
               ]
             }
           },
