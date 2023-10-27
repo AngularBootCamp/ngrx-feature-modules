@@ -21,7 +21,7 @@
     "@ngrx/store": "^16.0.0",
     "@ngrx/store-devtools": "^16.0.0",
     "@picocss/pico": "^1.5.7",
-    "array-flat-polyfill": "undefined",
+    "array-flat-polyfill": "1.0.1",
     "material-design-icons-iconfont": "^6.7.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
