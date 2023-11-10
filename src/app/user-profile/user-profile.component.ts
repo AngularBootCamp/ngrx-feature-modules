@@ -1,9 +1,11 @@
+import { NgIf, AsyncPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   FormControl,
   FormGroup,
   NonNullableFormBuilder,
-  Validators
+  Validators,
+  ReactiveFormsModule
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable, tap } from 'rxjs';
@@ -14,9 +16,11 @@ import { UserProfile } from './user-profile.types';
 
 @Component({
   selector: 'app-user-profile',
-  templateUrl: './user-profile.component.html'
+  templateUrl: './user-profile.component.html',
+  standalone: true,
+  imports: [NgIf, ReactiveFormsModule, AsyncPipe]
 })
-export class UserProfileComponent {
+export default class UserProfileComponent {
   userProfile: Observable<UserProfile | undefined>;
   profileForm: FormGroup<{
     name: FormControl<string>;

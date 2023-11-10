@@ -1,15 +1,19 @@
+import { NgFor, AsyncPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
+import { EmployeeDisplayComponent } from '../employee-display/employee-display.component';
 import { employeesActions } from '../employees.actions';
 import * as EmployeesSelectors from '../employees.selectors';
 
 @Component({
   selector: 'app-new-employees',
-  templateUrl: './new-employees.component.html'
+  templateUrl: './new-employees.component.html',
+  standalone: true,
+  imports: [NgFor, EmployeeDisplayComponent, AsyncPipe]
 })
-export class NewEmployeesComponent {
+export default class NewEmployeesComponent {
   newEmpList: Observable<string[]>;
 
   constructor(private store: Store) {

@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import {
+  RouterLinkActive,
+  RouterLink,
+  RouterOutlet
+} from '@angular/router';
 
 @Component({
   selector: 'app-employees-dashboard',
@@ -15,6 +20,8 @@ import { Component } from '@angular/core';
     </nav>
 
     <router-outlet></router-outlet>
-  `
+  `,
+  standalone: true,
+  imports: [RouterLinkActive, RouterLink, RouterOutlet]
 })
-export class EmployeesDashboardComponent {}
+export default class EmployeesDashboardComponent {}
