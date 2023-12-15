@@ -1,8 +1,6 @@
 <article>
   <header>Current Employees</header>
   <div *ngFor="let employee of employeeList | async">
-    <app-employee-display
-      [employee]="employee"
-    ></app-employee-display>
+    <app-employee-display [employee]="employee" />
   </div>
 </article>

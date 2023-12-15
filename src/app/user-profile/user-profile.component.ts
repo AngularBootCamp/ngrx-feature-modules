@@ -28,7 +28,10 @@ export default class UserProfileComponent {
     phone: FormControl<string>;
   }>;
 
-  constructor(private store: Store, fb: NonNullableFormBuilder) {
+  constructor(
+    private store: Store,
+    fb: NonNullableFormBuilder
+  ) {
     this.profileForm = fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],

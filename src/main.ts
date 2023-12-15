@@ -30,7 +30,8 @@ bootstrapApplication(AppComponent, {
     provideEffects([UserProfileEffects]),
     provideStoreDevtools({
       maxAge: 50,
-      logOnly: environment.production
+      logOnly: environment.production,
+      trace: true
     }),
     provideHttpClient(),
     provideRouter(

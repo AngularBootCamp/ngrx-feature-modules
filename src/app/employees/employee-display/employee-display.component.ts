@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core';
   standalone: true
 })
 export class EmployeeDisplayComponent {
-  @Input() employee = '';
+  @Input({ required: true }) employee!: string;
 }

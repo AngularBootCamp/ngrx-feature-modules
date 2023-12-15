@@ -13,7 +13,7 @@ import { selectUserName } from './user-profile/user-profile.selectors';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrl: './app.component.scss',
   standalone: true,
   imports: [RouterLinkActive, RouterLink, RouterOutlet, AsyncPipe]
 })

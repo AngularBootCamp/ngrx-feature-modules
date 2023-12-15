@@ -3,8 +3,6 @@
   <div *ngFor="let employee of newEmpList | async">
     <button (click)="ack(employee)">Acknowledge</button>
     &nbsp;
-    <app-employee-display
-      [employee]="employee"
-    ></app-employee-display>
+    <app-employee-display [employee]="employee" />
   </div>
 </article>
