@@ -1,5 +1,5 @@
 <article>
-  <ng-container *ngIf="userProfile | async as profile; else loading">
+  @if (userProfile | async; as profile) {
     <header>Hello {{ profile.username }}</header>
     <form [formGroup]="profileForm" (ngSubmit)="saveUser(profile)">
       <label>
@@ -30,6 +30,7 @@
         Save
       </button>
     </form>
-  </ng-container>
-  <ng-template #loading>loading user profile...</ng-template>
+  } @else {
+    loading user profile...
+  }
 </article>

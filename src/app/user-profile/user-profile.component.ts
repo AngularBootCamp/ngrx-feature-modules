@@ -1,4 +1,4 @@
-import { NgIf, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   FormControl,
@@ -18,7 +18,7 @@ import { UserProfile } from './user-profile.types';
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   standalone: true,
-  imports: [NgIf, ReactiveFormsModule, AsyncPipe]
+  imports: [ReactiveFormsModule, AsyncPipe]
 })
 export default class UserProfileComponent {
   userProfile: Observable<UserProfile | undefined>;

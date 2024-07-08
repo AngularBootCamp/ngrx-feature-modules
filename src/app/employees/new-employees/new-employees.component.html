@@ -1,8 +1,10 @@
 <article>
   <header>New Employees</header>
-  <div *ngFor="let employee of newEmpList | async">
-    <button (click)="ack(employee)">Acknowledge</button>
-    &nbsp;
-    <app-employee-display [employee]="employee" />
-  </div>
+  @for (employee of newEmpList | async; track employee) {
+    <div>
+      <button (click)="ack(employee)">Acknowledge</button>
+      &nbsp;
+      <app-employee-display [employee]="employee" />
+    </div>
+  }
 </article>

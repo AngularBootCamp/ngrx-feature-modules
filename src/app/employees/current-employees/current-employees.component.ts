@@ -1,4 +1,4 @@
-import { NgFor, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -10,7 +10,7 @@ import * as EmployeesSelectors from '../employees.selectors';
   selector: 'app-current-employees',
   templateUrl: './current-employees.component.html',
   standalone: true,
-  imports: [NgFor, EmployeeDisplayComponent, AsyncPipe]
+  imports: [EmployeeDisplayComponent, AsyncPipe]
 })
 export default class CurrentEmployeesComponent {
   employeeList: Observable<string[]>;
