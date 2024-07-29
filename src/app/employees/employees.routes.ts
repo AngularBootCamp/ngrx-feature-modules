@@ -5,7 +5,7 @@ import { provideState } from '@ngrx/store';
 import { EmployeesEffects } from './employees.effects';
 import * as fromEmployees from './employees.reducer';
 
-const routes: Routes = [
+const employeeRoutes: Routes = [
   {
     path: '',
     providers: [
@@ -29,4 +29,4 @@ const routes: Routes = [
   }
 ];
 
-export default routes;
+export default employeeRoutes;
